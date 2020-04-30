@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Roboto&display=swap');
+
+/*adapted from https://codepen.io/ccidesign/pen/Yydjxr*/
+
+body {
+  background-color: #7cccfc; /*#456789;*/
+/*   background-image: linear-gradient(#456789, #123456); */
+  min-height: 100vh; /*816x1110*/
+}
+
+a{
+  color: #ff0037;
+}
+
+#card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+
+.flip-container {
+  perspective: 1000; 
+}
+
+.flip-container.hover {
+  transition: 1s;
+}
+
+.flip-container.hover .flipper,
+.flip-container.flip .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container.hover .back {
+  backface-visibility: visible;
+  z-index: 10000;
+  transform: rotateY(180deg);
+  background-color: #efefef;
+  color: #000;
+  padding: 30px;
+  margin: 30px -30px;/*MATCH W PADDING OF REGULAR VIEW*/
+}
+
+.flip-container.hover .front {
+  backface-visibility: hidden;
+  display: none;
+}
+
+.flip-container,
+.front, .back {
+  width: 408px;
+  height: 555px;
+  margin: 30px;/*MATCH W PADDING OF BACK VIEW*/
+  display: inline-block;
+}
+
+.flipper {
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #424242;
+  /*box-shadow: 0 0 10px #000;*/
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
+}
+
+.front {
+  z-index: 2; 
+  transform: rotateY(0deg);
+  background-color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #efefef;
+  color: #000;
+  padding: 30px;
+}
+
+
+
+.title {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+/*.wrapper-01 {
+  background-image:url(../imgs/allstar_cards-01.png)
+}
+
+.wrapper-02 {
+  background-image:url(../imgs/allstar_cards-02.png)
+}
+
+.wrapper-03 {
+  background-image:url(../imgs/allstar_cards-03.png)
+}
+
+.wrapper-04 {
+  background-image:url(../imgs/allstar_cards-04.png)
+}
+*/
+
+/*NAVBAR*/
+
+.navbar {
+  background-color: #fff;
+}
+
+.menu-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.navbar-brand {
+    font-family: 'Arvo', sans-serif;
+    font-size: 2em;
+}
+
+/*BACKSIDE*/
+
+.back-title {
+  font-family: 'Arvo', serif;
+  font-size: 1.9em;
+}
+
+.grad {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.deg {
+  font-family: 'Arvo', serif;
+  font-weight: 700;
+}
+
+.year {
+    font-family: 'Roboto', sans-serif;
+    line-height: .9em;
+}
+
+
+.back-body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.back-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.star {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: url(../imgs/star.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.uni {
+  font-size: .9em;
+  font-family: 'Arvo', serif;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.statement {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+
+.site {
+  text-align: center;
+  position: absolute;
+  bottom: 60px;
+  left:0;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Arvo', serif;
+  font-weight: 600;
+}
+
+@media (max-width: 576px) { 
+  .flip-container, .front, .back {
+    width: 340px;
+    height: 480px;
+    margin: 10px 0;
+  }
+  .menu-img {
+    display: none;
+  }
+
+  .navbar-brand {
+    font-size: 1.5em;
+  }
+  
+ }
