@@ -14,8 +14,10 @@ fetch(dataURL).then(function(response) {
       if (json.feed.entry) {
         var data = json.feed.entry;
         data.forEach(function(element){
-          cards.push(makeCard(element));          
-          console.log(element)
+        	if(element.gsx$removeajerk.$t != 'yes'){
+        		cards.push(makeCard(element));          
+          		console.log(element)
+        	}
         })
       }
       shuffle(cards);
