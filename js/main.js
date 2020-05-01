@@ -60,7 +60,7 @@ function makeBack(element){
   return `<div class="back">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
   			<div class="statement">${statement}</div>
-  			<div class="site"><a href="${site}">More work from ${name}</a></div>
+  			<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
   			<div class="footer">© 2020 FotoFika</div>
   			</div>`
 }
@@ -173,3 +173,13 @@ var shuffle = function (array) {
 	return array;
 
 };
+
+
+//scroll to if has hash
+if(window.location.hash) {
+  scrollTo(window.location.hash)
+} 
+
+function scrollTo(hash) {
+    location.hash = hash;
+}
