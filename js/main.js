@@ -35,7 +35,7 @@ function makeCard(element){
         console.log(orientation);
         let fileName = cleanImageName(uglyFileName);
         let random = Math.floor(Math.random() * 8) + 1;
-        return `<div class="flip-container grid-item" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
+        return `<div class="flip-container" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
         <a href="#${fileName}"><div class="front" style="background-image:url(imgs/bc-0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element)}</div></div>`
 		//  background-image: url(img_flwr.gif), url(paper.gif);
 
