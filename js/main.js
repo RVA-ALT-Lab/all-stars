@@ -22,6 +22,8 @@ fetch(dataURL).then(function(response) {
       }
       shuffle(cards);
       document.getElementById('card-holder').innerHTML = cards.join("");
+    }).then(function(json){
+    	scrollTo()
     });
   } 
 });
@@ -176,10 +178,12 @@ var shuffle = function (array) {
 
 
 //scroll to if has hash
-if(window.location.hash) {
-  scrollTo(window.location.hash)
-} 
 
-function scrollTo(hash) {
-    location.hash = hash;
+function scrollTo(){
+	if(window.location.hash) {
+		var element_to_scroll_to = document.querySelectorAll(window.location.hash)[0];
+	    element_to_scroll_to.scrollIntoView();
+
+	} 
+
 }
