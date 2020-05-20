@@ -6,6 +6,7 @@ body {
   background-color: #7cccfc; /*#456789;*/
 /*   background-image: linear-gradient(#456789, #123456); */
   min-height: 100vh; /*816x1110*/
+  scroll-behavior: smooth;
 }
 
 a{
@@ -21,8 +22,8 @@ a{
 }
 
 
-.flip-container.hover {
-  transition: 1s;
+.flip-container, .hover {
+  transition: all 1s ease; 
 }
 
 .flip-container.hover .flipper,
@@ -47,8 +48,7 @@ a{
   display: none;
 }
 
-.flip-container
- {
+.flip-container{
   width: 408px;
   height: 555px;
   margin: 30px;/*MATCH W PADDING OF BACK VIEW*/
@@ -67,6 +67,21 @@ a{
   margin-bottom: 20px;
 }
 
+.front img {
+  object-fit: cover;
+  width: 408px;
+  height: 555px;
+  z-index: 4; 
+}
+
+.frame {
+  object-fit: contain;
+  width: 408px;
+  height: 555px;
+  position: absolute;
+  top:0;
+  left: 0;
+}
 
 .front,
 .back {
@@ -222,6 +237,144 @@ a{
   border-radius: 50%;
 }
 
+
+/*INSTA VIEW*/
+.save {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  height: 50px;
+  z-index: 10;
+}
+#foo {
+  background-color: #7cccfc;
+  min-height: 200vh;
+  margin:0;
+  padding:0;
+}
+
+#navigation {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 240px;
+  z-index: 100;
+}
+
+#navigation button {
+  height: 50px;
+  width: 70px;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+#insta-view #card-holder {
+  padding: 0;
+  margin:0;
+  display: flex; // make us of Flexbox
+  align-items: center; // does vertically center the desired content
+  justify-content: center; // horizontally centers single line items
+  text-align: center; // optional, but helps horizontally center text that breaks into multiple lines
+}
+
+
+#insta-view .card-thing {
+  width: 1243px;
+  height: 1243px;
+  background-color: #7cccfc;
+  position: absolute;
+  top:0;
+  left:0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.frame, .work {
+  position: absolute;
+  top: 70px;
+  left: 210px;
+}
+
+.frame {
+  width: 816px;
+  height: 1110px;
+}
+
+#insta-view .front {
+  position: relative;
+  top: auto;
+  margin: 40px auto !important;
+}
+
+#insta-view #card-holder {
+  display: block;
+}
+
+#insta-view .back {
+  transform: none;
+}
+
+#back-content {
+  width: 816px;
+  height: 1110px;
+  position: absolute;
+  top: 70px;
+  left: 210px;
+  overflow: hidden;
+}
+
+#back-content .deg, #back-content .year {
+  font-size: 3em;
+}
+
+#back-content .grad {
+  margin: 50px 70px;
+}
+
+#back-content .star {
+  width: 140px;
+  height: 140px;
+  margin: 60px 70px;
+}
+
+#back-content .back-top {
+  margin-bottom: 100px;
+}
+
+#back-content .back-title {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+#back-content .uni {
+  font-size: 2em;
+  margin-bottom: 20px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+#back-content .statement {
+  font-size: 2.5em;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+#back-content .site {
+  font-size: 2em;
+  bottom: 120px;
+}
+
+#back-content .footer {
+  font-size: 2em;
+  bottom: 50px;
+}
+
+
 @media (max-width: 576px) { 
   .flip-container, .front, .back {
     width: 340px;
@@ -239,5 +392,19 @@ a{
   .navbar-brand {
     font-size: 1.5em;
   }
+
+  .front img {
+    object-fit: cover;
+    width: 340px;
+    height: 480px;
+  }
+
+  .frame {
+    object-fit: contain;
+    width: 340px;
+    height: 480px;
+  }
+
     
  }
+
