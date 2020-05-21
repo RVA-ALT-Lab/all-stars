@@ -20,10 +20,10 @@ fetch(dataURL).then(function(response) {
           var size = urlParams.get('id')
         } else {
           var size = (Object.keys(data).length) -1;
-          const url = new URL(window.location.href);
+          var url = new URL(window.location.href);
           var searchParams = new URLSearchParams('?id='+size);
-          //url.searchParams.append('id', size);
-          location.replace( url + searchParams);
+          url.searchParams.append('id', size);
+          location.replace( url );
         }
         data.forEach(function(element, index){
         	if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
@@ -68,6 +68,7 @@ function makeBack(element){
   	</div>
   	<div class="star"></div>
   	</div>`;
+    setInstaText(name, deg, uni, statement, site);
   return `<div class="card-thing vertical" id="the-back"><div id="back-content" class="back">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
   			<div class="statement">${statement}</div>
@@ -76,6 +77,20 @@ function makeBack(element){
   			</div></div>`
 }
 
+function setInstaText(name, deg, uni, statement, site){
+  let destination = document.getElementById('insta-text');
+  if (site.includes('instagram')){
+    if(site.charAt(site.length-1) != '/'){
+      site = site+'/'
+    }
+    let pieces = site.split("/")
+    var insta = '@'+pieces[pieces.length - 2];
+  } else {
+    var insta = ''
+  }
+  destination.value = `${name}, ${deg}, ${uni} writes:\n"${statement}" ${insta} 
+  @2020_allstars @fotofika2020 #2020allstars #fotofika2020 #spenational #centerforcreativephotography`;
+}
 
 
 function cleanImageName(name){
@@ -127,6 +142,10 @@ function clickerDL(id, name){
         console.log(canvas);
         saveAs(canvas.toDataURL(), name+'_back.png');
     });
+
+  var copyText = document.querySelector("#insta-text");
+  copyText.select();
+  document.execCommand("copy");
 }
 
 function saveCapture(element) {
