@@ -20,7 +20,7 @@ fetch(dataURL).then(function(response) {
         	}
         })
       }
-      shuffle(cards);
+      //shuffle(cards);
       document.getElementById('card-holder').innerHTML = cards.join("");
     }).then(function(json){
     	scrollTo()
@@ -35,8 +35,9 @@ function makeCard(element){
         let orientation = element.gsx$isyourimageahorizontalorvertical.$t.toLowerCase();
         let uglyFileName = element.gsx$filename.$t;
         let fileName = cleanImageName(uglyFileName);
+        let deg = element.gsx$mfabfabainphotography.$t;
         let random = Math.floor(Math.random() * 8) + 1;
-        return `<div class="flip-container ${orientation}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
+        return `<div class="flip-container ${orientation} ${deg.toLowerCase()}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
         <a href="#${fileName}"><div class="front" style="background-image:url(imgs/bc-0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element)}</div></div>`
 		//  background-image: url(img_flwr.gif), url(paper.gif);
 
@@ -183,5 +184,18 @@ function scrollTo(){
 	    element_to_scroll_to.scrollIntoView();
 
 	} 
-
 }
+
+
+  const buttons = document.querySelectorAll(".sorter");
+  for (const button of buttons) {
+    button.addEventListener('click', function(event) {
+      console.log(button.id);
+      let allCards = document.querySelectorAll(".flip-container");
+      for (card of allCards){
+        if(!card.classList.contains(button.id)){
+          card.classList.toggle('hide')
+        }
+      }
+    })
+  }

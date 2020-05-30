@@ -241,11 +241,12 @@ a{
 /*INSTA VIEW*/
 .save {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  top: 10px;
+  left: 200px;
   width: 200px;
-  height: 50px;
+  height: 60px;
   z-index: 10;
+  background-color: #efefef;
 }
 #foo {
   background-color: #7cccfc;
@@ -256,19 +257,20 @@ a{
 
 #navigation {
   position: fixed;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
   width: 240px;
   z-index: 100;
 }
 
 #navigation button {
-  height: 50px;
+  height: 60px;
   width: 70px;
   display: inline-block;
   margin-right: 10px;
   font-size: 2em;
   font-weight: 700;
+  background-color: #efefef;
 }
 
 #insta-view #card-holder {
@@ -372,6 +374,10 @@ a{
 #back-content .footer {
   font-size: 2em;
   bottom: 50px;
+}
+
+.hide {
+  display: none;
 }
 
 
