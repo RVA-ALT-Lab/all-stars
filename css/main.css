@@ -380,6 +380,21 @@ a{
   display: none;
 }
 
+.sorter {
+  width: 50px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid;
+  transition: all .2s;
+}
+
+.sorter:hover {
+  background-color: #ff0037;
+}
+
+.sorter.active {
+  background-color: #ff0037;
+}
 
 @media (max-width: 576px) { 
   .flip-container, .front, .back {
