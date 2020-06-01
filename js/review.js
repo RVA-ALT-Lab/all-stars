@@ -190,11 +190,14 @@ function scrollTo(){
   const buttons = document.querySelectorAll(".sorter");
   for (const button of buttons) {
     button.addEventListener('click', function(event) {
-      console.log(button.id);
+     
       let allCards = document.querySelectorAll(".flip-container");
       for (card of allCards){
-        if(!card.classList.contains(button.id)){
-          card.classList.toggle('hide')
+        console.log(card.classList);
+        if(card.classList.contains(button.id)){
+         card.classList.remove('hide')
+        } else {
+          card.classList.add('hide') 
         }
       }
     })
