@@ -101,6 +101,9 @@ a{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid #424242;
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
+  margin: 10px;
 }
 
 .single-front  img {
@@ -110,6 +113,12 @@ a{
   z-index: 4; 
 }
 
+#single-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+}
 
 .single-back {
   border: 1px solid #424242;
@@ -118,7 +127,19 @@ a{
   color: #000;
   width: 408px;
   height: 555px;
+  display: block;
+  margin: 10px;
+  position: relative;
 }
+
+.single-back .back-title, .single-back .back-top {
+  margin: 30px 30px 0 30px;
+}
+
+.single-back .uni, .single-back .statement {
+  margin: 0 30px 10px 30px;
+}
+
 
 .front {
   z-index: 2; 

@@ -50,7 +50,7 @@ function makeCard(element){
         let uglyFileName = element.gsx$filename.$t;
         let fileName = cleanImageName(uglyFileName);
         let random = Math.floor(Math.random() * 8) + 1;
-        return `<div class="col-md-4 offset-md-2" id="${fileName}">
+        return `<div id="${fileName}">
                   <a href="#${fileName}">
                     <div class="single-front" style="background-image:url(imgs/bc-0${random}.png),url(work/${fileName}.jpg)"></div>
                   </a>
@@ -75,7 +75,7 @@ function makeBack(element){
     </div>
     <div class="star"></div>
     </div>`;
-  return `<div class="single-back col-md-4 offset-md-1">${backTop}<h1 class="back-title">${name}</h1>
+  return `<div class="single-back">${backTop}<h1 class="back-title">${name}</h1>
         <div class="uni">${uni}</div>
         <div class="statement">${statement}</div>
         <div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
