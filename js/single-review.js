@@ -19,18 +19,35 @@ fetch(dataURL).then(function(response) {
         const urlParams = new URLSearchParams(queryString);     
         if (urlParams.get('id')){
           var size = urlParams.get('id')
-        } else {
+        } 
+        else {
           var size = (Object.keys(data).length) -1;
           var url = new URL(window.location.href);
           var searchParams = new URLSearchParams('?id='+size);
           url.searchParams.append('id', size);
           location.replace( url );
         }
+        if (urlParams.get('reviewer')){
+          var reviewer = urlParams.get('reviewer')
+        } else {
+          var reviewer = ''
+        }
+         if (urlParams.get('title')){
+          var title = urlParams.get('title')
+        }else {
+          var title = ''
+        }
+        if (urlParams.get('affiliation')){
+          var affiliation = urlParams.get('affiliation')
+        }else {
+          var affiliation = ''
+        }
+        
         data.forEach(function(element, index){
           if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
             cards.push(makeCard(element));          
               //console.log(element)
-              makeForm(element);
+              makeForm(element, reviewer, title, affiliation);
 
           }
         })
@@ -85,12 +102,18 @@ function makeBack(element){
 }
 
 
-function makeForm(element){
+function makeForm(element, reviewer, title, affiliation){
   let name = element.gsx$yournameasyouwouldlikeittoappear.$t;
+  //(IsItMuted === true) ? 'On' : 'Off';
+  let reviewerFilled = (reviewer != '') ? '&entry.347538168='+reviewer : ''
+  let titleFilled =  (title != '') ? '&entry.232749916='+title : ''
+  let affiliationFilled = (affiliation != '') ? '&entry.affiliation='+affiliation : ''
   let form = document.querySelector('iframe');
-  form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSffa3hhQEqIPDvSSj6kgWzF83v8K8ZydKi0V26BvaQg3HG7uA/viewform?embedded=true&usp=pp_url&entry.678498904='+name;
+  form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSffa3hhQEqIPDvSSj6kgWzF83v8K8ZydKi0V26BvaQg3HG7uA/viewform?embedded=true&usp=pp_url&entry.678498904='+name+reviewerFilled+titleFilled+affiliationFilled;
 }
 
+
+//usp=pp_url&entry.347538168=Your+name&entry.232749916=your+title&entry.938826356=your+affiliation&entry.439443959=your+bio
 
 function cleanImageName(name){
   let cleanerName = name.split(' -')[0];
