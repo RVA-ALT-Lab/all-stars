@@ -107,7 +107,7 @@ function makeForm(element, reviewer, title, affiliation){
   //(IsItMuted === true) ? 'On' : 'Off';
   let reviewerFilled = (reviewer != '') ? '&entry.347538168='+reviewer : ''
   let titleFilled =  (title != '') ? '&entry.232749916='+title : ''
-  let affiliationFilled = (affiliation != '') ? '&entry.affiliation='+affiliation : ''
+  let affiliationFilled = (affiliation != '') ? '&entry.938826356='+affiliation : ''
   let form = document.querySelector('iframe');
   form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSffa3hhQEqIPDvSSj6kgWzF83v8K8ZydKi0V26BvaQg3HG7uA/viewform?embedded=true&usp=pp_url&entry.678498904='+name+reviewerFilled+titleFilled+affiliationFilled;
 }
