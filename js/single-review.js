@@ -30,6 +30,7 @@ fetch(dataURL).then(function(response) {
           if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
             cards.push(makeCard(element));          
               //console.log(element)
+              makeForm(element);
 
           }
         })
@@ -83,6 +84,14 @@ function makeBack(element){
         </div>`
 }
 
+
+function makeForm(element){
+  let name = element.gsx$yournameasyouwouldlikeittoappear.$t;
+  let form = document.querySelector('iframe');
+  form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSffa3hhQEqIPDvSSj6kgWzF83v8K8ZydKi0V26BvaQg3HG7uA/viewform?embedded=true&usp=pp_url&entry.678498904='+name;
+}
+
+
 function cleanImageName(name){
   let cleanerName = name.split(' -')[0];
   let cleanName = cleanerName.toLowerCase();
@@ -101,8 +110,6 @@ function replaceImage(id) {
 //    console.log(json.bytes)
     return json.bytes
     })
-  
-  
 }
 
 function getImgId(element){

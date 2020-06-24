@@ -443,6 +443,11 @@ a{
   background-color: #ff0037;
 }
 
+iframe{
+  margin: 40px auto;
+  display: block;
+}
+
 @media (max-width: 576px) { 
   .flip-container, .front, .back, .single-front, .single-back {
     width: 340px;
