@@ -14,16 +14,21 @@ fetch(dataURL).then(function(response) {
       if (json.feed.entry) {
         var data = json.feed.entry;
         data.forEach(function(element){
-        	if(element.gsx$removeajerk.$t != 'yes'){
-        		cards.push(makeCard(element));          
-          		console.log(element)
-        	}
+          if(element.gsx$removeajerk.$t != 'yes'){
+            console.log(element.gsx$reviewed.$t);
+            console.log(element.gsx$yournameasyouwouldlikeittoappear.$t);
+            if(element.gsx$reviewed.$t === '#N/A' ){
+                cards.push(makeCard(element));          
+              //console.log(element)
+            }
+          
+          }
         })
       }
       //shuffle(cards);
       document.getElementById('card-holder').innerHTML = cards.join("");
     }).then(function(json){
-    	scrollTo()
+      scrollTo()
     });
   } 
 });
@@ -39,7 +44,7 @@ function makeCard(element){
         let random = Math.floor(Math.random() * 8) + 1;
         return `<div class="flip-container ${orientation} ${deg.toLowerCase()}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
         <a href="#${fileName}"><div class="front" style="background-image:url(imgs/bc-0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element)}</div></div>`
-		//  background-image: url(img_flwr.gif), url(paper.gif);
+    //  background-image: url(img_flwr.gif), url(paper.gif);
 
         //return '<div class="flip-container"><div class="flipper"><div class="front"><img src="data:image/jpeg;base64,'+img+'"/></div>'+makeBack(element)+'</div></div>'
 }
@@ -53,24 +58,24 @@ function makeBack(element){
   const site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
   const backTop = 
   `<div class="back-top">
-  	<div class="grad">
-  		<div class="deg">${deg}</div>
-  		<div class="year">2020</div>
-  	</div>
-  	<div class="star"></div>
-  	</div>`;
+    <div class="grad">
+      <div class="deg">${deg}</div>
+      <div class="year">2020</div>
+    </div>
+    <div class="star"></div>
+    </div>`;
   return `<div class="back">${backTop}<h1 class="back-title">${name}</h1>
-  			<div class="uni">${uni}</div>
-  			<div class="statement">${statement}</div>
-  			<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
-  			<div class="footer">© 2020 FotoFika</div>
-  			</div>`
+        <div class="uni">${uni}</div>
+        <div class="statement">${statement}</div>
+        <div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
+        <div class="footer">© 2020 FotoFika</div>
+        </div>`
 }
 
 function cleanImageName(name){
-	let cleanerName = name.split(' -')[0];
-	let cleanName = cleanerName.toLowerCase();
-	return cleanName;
+  let cleanerName = name.split(' -')[0];
+  let cleanName = cleanerName.toLowerCase();
+  return cleanName;
 }
 
 
@@ -90,7 +95,7 @@ function replaceImage(id) {
 }
 
 function getImgId(element){
-	//"gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"
+  //"gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"
 
   var imgBase = element["gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"].$t;
   var equals = imgBase.search("=")+1;
@@ -101,11 +106,11 @@ function getImgId(element){
 //document.querySelector('#replaceButton').addEventListener('click', replaceImage)
 
 jQuery(document).ready(function(){ 
-	var button = jQuery('.flipcontainer');
+  var button = jQuery('.flipcontainer');
 
-	button.on("click",function(){
-		button.toggleClass('hover');
-	});
+  button.on("click",function(){
+    button.toggleClass('hover');
+  });
 });
 
 
@@ -156,22 +161,22 @@ jQuery('a[href*="#"]')
  */
 var shuffle = function (array) {
 
-	var currentIndex = array.length;
-	var temporaryValue, randomIndex;
+  var currentIndex = array.length;
+  var temporaryValue, randomIndex;
 
-	// While there remain elements to shuffle...
-	while (0 !== currentIndex) {
-		// Pick a remaining element...
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
 
-		// And swap it with the current element.
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-	return array;
+  return array;
 
 };
 
@@ -179,11 +184,11 @@ var shuffle = function (array) {
 //scroll to if has hash
 
 function scrollTo(){
-	if(window.location.hash) {
-		var element_to_scroll_to = document.querySelectorAll(window.location.hash)[0];
-	    element_to_scroll_to.scrollIntoView();
+  if(window.location.hash) {
+    var element_to_scroll_to = document.querySelectorAll(window.location.hash)[0];
+      element_to_scroll_to.scrollIntoView();
 
-	} 
+  } 
 }
 
 
