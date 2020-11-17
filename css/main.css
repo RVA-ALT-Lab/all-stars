@@ -92,6 +92,7 @@ a{
   border: 1px solid #424242;
   /*box-shadow: 0 0 10px #000;*/
   box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
+  border-radius: 10px;
 }
 
 .single-front {
@@ -104,6 +105,12 @@ a{
   border: 1px solid #424242;
   box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
   margin: 10px;
+}
+
+.back {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .single-front  img {
@@ -238,14 +245,14 @@ a{
   margin-bottom: 50px;
 }
 
-.star {
+/*.star {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background-image: url(../imgs/star.jpg);
   background-repeat: no-repeat;
   background-size: contain;
-}
+}*/
 
 .uni {
   font-size: .9em;

@@ -35,16 +35,16 @@ function makeCard(element){
         let orientation = element.gsx$isyourimageahorizontalorvertical.$t.toLowerCase();
         let uglyFileName = element.gsx$filename.$t;
         let fileName = cleanImageName(uglyFileName);
-        let random = Math.floor(Math.random() * 8) + 1;
+        let random = Math.floor(Math.random() * 4) + 1;
         return `<div class="flip-container ${orientation}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
-        <a href="#${fileName}"><div class="front" style="background-image:url(imgs/bc-0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element)}</div></div>`
+        <a href="#${fileName}"><div class="front" style="background-image:url(imgs/ff_cards_front_0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element, random)}</div></div>`
 		//  background-image: url(img_flwr.gif), url(paper.gif);
 
         //return '<div class="flip-container"><div class="flipper"><div class="front"><img src="data:image/jpeg;base64,'+img+'"/></div>'+makeBack(element)+'</div></div>'
 }
 
 
-function makeBack(element){
+function makeBack(element, random){
   const name = element.gsx$yournameasyouwouldlikeittoappear.$t;
   const deg = element.gsx$mfabfabainphotography.$t;
   const uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
@@ -58,7 +58,7 @@ function makeBack(element){
   	</div>
   	<div class="star"></div>
   	</div>`;
-  return `<div class="back">${backTop}<h1 class="back-title">${name}</h1>
+  return `<div class="back" style="background-image:url(imgs/ff_cards_back_0${random}.png)">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
   			<div class="statement">${statement}</div>
   			<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
