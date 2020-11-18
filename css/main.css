@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Roboto&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto&display=swap');
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&Poppins:wght@400;800&display=swap');
+
 
 /*adapted from https://codepen.io/ccidesign/pen/Yydjxr*/
 
@@ -38,7 +41,7 @@ a{
 }
 
 .flip-container .back {
-  padding: 30px;
+  padding: 50px;
   background-color: #efefef;
   color: #000;
 }
@@ -49,14 +52,14 @@ a{
 }
 
 .flip-container{
-  width: 408px;
+  width: 398px;
   height: 555px;
   margin: 30px;/*MATCH W PADDING OF BACK VIEW*/
   display: inline-block;
 }
 
 .back, .front {
-  width: 408px;
+  width: 398px;
   height: 555px;
 }
 
@@ -69,14 +72,14 @@ a{
 
 .front img {
   object-fit: cover;
-  width: 408px;
+  width: 398px;
   height: 555px;
   z-index: 4; 
 }
 
 .frame {
   object-fit: contain;
-  width: 408px;
+  width: 398px;
   height: 555px;
   position: absolute;
   top:0;
@@ -89,8 +92,8 @@ a{
   position: absolute;
   top: 0;
   left: 0;
-  border: 1px solid #424242;
-  /*box-shadow: 0 0 10px #000;*/
+/*  border: 1px solid #424242;
+*/  /*box-shadow: 0 0 10px #000;*/
   box-shadow: 0 8px 8px 0 rgba(0,0,0,.2);
   border-radius: 10px;
 }
@@ -141,6 +144,11 @@ a{
 
 .single-back .back-title, .single-back .back-top {
   margin: 30px 30px 0 30px;
+}
+
+.back-title {
+  padding-top: 30px;
+  margin-bottom: 0;
 }
 
 .single-back .uni, .single-back .statement {
@@ -208,15 +216,18 @@ a{
 }
 
 .navbar-brand {
-    font-family: 'Arvo', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 2em;
+    font-weight: 800;
 }
 
 /*BACKSIDE*/
 
 .back-title {
-  font-family: 'Arvo', serif;
-  font-size: 1.9em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6em;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .grad {
@@ -224,10 +235,20 @@ a{
   font-size: 1.5em;
 }
 
-.deg {
-  font-family: 'Arvo', serif;
-  font-weight: 700;
+.uni, .deg {
+  font-size: .8em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  font-weight: 500;
 }
+
+
+.deg {
+  margin-bottom: 15px;
+}
+
 
 .year {
     font-family: 'Roboto', sans-serif;
@@ -254,17 +275,22 @@ a{
   background-size: contain;
 }*/
 
-.uni {
-  font-size: .9em;
-  font-family: 'Arvo', serif;
-  margin-bottom: 10px;
-  font-weight: 400;
-}
+
 
 .statement {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.1em;
+  font-size: 1em;
 }
+
+.review {
+  font-weight: 800;
+  margin: 15px 0 0 0;
+}
+
+.reviewer {
+  text-align: right;
+}
+
 
 .site {
   text-align: center;
@@ -276,12 +302,14 @@ a{
 
 .footer {
   position: absolute;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
+  bottom: 25px;
+  left: 30px;
+  width: 50%;
   text-align: center;
-  font-family: 'Arvo', serif;
-  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: .8em;
+  text-align: left;
 }
 
 .navbar-toggler-icon {
@@ -483,6 +511,14 @@ iframe{
     object-fit: contain;
     width: 340px;
     height: 480px;
+  }
+
+  .back-title {
+    padding-top: 0;
+  }
+
+  .review, .statement {
+    font-size: .8em;
   }
 
     
