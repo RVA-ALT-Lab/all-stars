@@ -319,6 +319,14 @@ a{
   border-radius: 50%;
 }
 
+.reviewer-card .front{
+   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.reviewer-card .review, .reviewer-card .reviewer, .reviewer-card .site {
+  display: none;
+}
 
 /*INSTA VIEW*/
 .save {

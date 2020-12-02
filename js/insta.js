@@ -59,7 +59,12 @@ function makeBack(element){
   const deg = element.gsx$mfabfabainphotography.$t;
   const uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
   const statement = element.gsx$onesentence140charactersmaxaboutyourawesomeaboutyouyourimageoryourwork.$t;
-  const site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
+  if(element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t){
+      const site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
+      let siteDiv = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
+  } else {
+     let siteDiv = '';
+  }
   const backTop = 
   `<div class="back-top">
   	<div class="grad">
@@ -72,7 +77,7 @@ function makeBack(element){
   return `<div class="card-thing vertical" id="the-back"><div id="back-content" class="back">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
   			<div class="statement">${statement}</div>
-  			<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>
+  			${siteDiv}
   			<div class="footer">© 2020 FotoFika</div>
   			</div></div>`
 }

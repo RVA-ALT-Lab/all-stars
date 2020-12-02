@@ -41,7 +41,12 @@ function makeCard(element){
         } else {
           var star = '';
         }
-        return `<div class="flip-container ${orientation}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
+         if (element.gsx$type.$t == 'reviewer'){
+          var reviewer = 'reviewer-card';
+         } else {
+          var reviewer = '';
+         }
+        return `<div class="flip-container ${orientation} ${reviewer}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
         <a href="#${fileName}"><div class="front" style="background-image:url(imgs/ff_cards_front_${star}0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element, random)}</div></div>`
 		//  background-image: url(img_flwr.gif), url(paper.gif);
 
@@ -58,11 +63,13 @@ function makeBack(element, random){
   const review = element.gsx$review.$t;
   const reviewer = element.gsx$reviewer.$t;
 
-  if (site){
+  if (site != '#N/A'){
     externalSite = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
+  } else {
+    externalSite = '';
   }
 
-  if (review != "#N/A"){
+  if (review != "#N/A" || review != ''){
     var reviewStatement = `<div class="review">"${review}"<div class="reviewer">&mdash;${reviewer}</div></div>`
   } else {
     var reviewStatement = '';
@@ -81,9 +88,16 @@ function makeBack(element, random){
 }
 
 function cleanImageName(name){
-	let cleanerName = name.split(' -')[0];
-	let cleanName = cleanerName.toLowerCase();
-	return cleanName;
+  var cleanerName = name;
+  if(name.includes(' -')){
+       cleanerName = name.split(' -')[0];
+   // console.log('space dash there')
+  }  else if (name.includes('.')) {
+       cleanerName = name.split('.')[0];
+   // console.log(cleanerName)
+  } 
+  let cleanName = cleanerName.toLowerCase();
+  return cleanName;
 }
 
 
