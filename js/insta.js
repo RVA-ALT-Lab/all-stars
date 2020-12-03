@@ -26,7 +26,7 @@ fetch(dataURL).then(function(response) {
           location.replace( url );
         }
         data.forEach(function(element, index){
-        	if(element.gsx$removeajerk.$t != 'yes' && element.gsx$review.$t != '#N/A' ){ //change to URL pagination game later
+        	if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
         		cards.push(makeCard(element));          
           		//console.log(element)
 
@@ -60,10 +60,10 @@ function makeBack(element){
   const uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
   const statement = element.gsx$onesentence140charactersmaxaboutyourawesomeaboutyouyourimageoryourwork.$t;
   if(element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t){
-      const site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
-      let siteDiv = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
+      var site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
+      var siteDiv = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
   } else {
-     let siteDiv = '';
+     var siteDiv = '';
   }
   const backTop = 
   `<div class="back-top">

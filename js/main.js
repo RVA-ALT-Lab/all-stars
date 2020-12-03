@@ -73,13 +73,13 @@ function makeBack(element, random){
     var back = `ff_cards_back_0${random}.png`;
   }
 
-  if (site != '#N/A' || site != ''){
+  if (site != '#N/A'){
     externalSite = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
   } else {
     externalSite = '';
   }
 
-  if (review != "#N/A" || review != ''){
+  if (review != "#N/A"){
     var reviewStatement = `<div class="review">"${review}"<div class="reviewer">&mdash;${reviewer}</div></div>`
   } else {
     var reviewStatement = '';
