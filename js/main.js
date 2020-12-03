@@ -58,15 +58,22 @@ function makeCard(element){
 
 
 function makeBack(element, random){
-  const name = element.gsx$yournameasyouwouldlikeittoappear.$t;
-  const deg = element.gsx$mfabfabainphotography.$t;
-  const uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
-  const statement = element.gsx$onesentence140charactersmaxaboutyourawesomeaboutyouyourimageoryourwork.$t;
-  const site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t; 
-  const review = element.gsx$review.$t;
-  const reviewer = element.gsx$reviewer.$t;
+  let name = element.gsx$yournameasyouwouldlikeittoappear.$t;
+  let deg = element.gsx$mfabfabainphotography.$t;
+  let uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
+  let statement = element.gsx$onesentence140charactersmaxaboutyourawesomeaboutyouyourimageoryourwork.$t;
+  let site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t; 
+  let review = element.gsx$review.$t;
+  let reviewer = element.gsx$reviewer.$t;
+  let type = element.gsx$type.$t;
 
-  if (site != '#N/A'){
+  if(type == 'reviewer'){
+    var back = `ff_cardsArtboard_reviewer_back_black_fill.png`;
+  } else {
+    var back = `ff_cards_back_0${random}.png`;
+  }
+
+  if (site != '#N/A' || site != ''){
     externalSite = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
   } else {
     externalSite = '';
@@ -80,7 +87,8 @@ function makeBack(element, random){
   const backTop = 
   `<div class="back-top">
   	</div>`;
-  return `<div class="back" style="background-image:url(imgs/ff_cards_back_0${random}.png)">${backTop}<h1 class="back-title">${name}</h1>
+
+  return `<div class="back" style="background-image:url(imgs/${back})">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
         <div class="deg">${deg} 2020</div>
   			<div class="statement">${statement}</div>
