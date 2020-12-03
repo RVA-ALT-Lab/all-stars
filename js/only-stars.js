@@ -72,7 +72,7 @@ function makeBack(element, random){
   	</div>`;
   return `<div class="back" style="background-image:url(imgs/ff_cards_back_0${random}.png)">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
-        <div class="deg">${deg} 2020</div>
+        <div class="deg">${deg} <span class="year">2020</span></div>
   			<div class="statement">${statement}</div>
         ${reviewStatement}
   			${externalSite}

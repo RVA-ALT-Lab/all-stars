@@ -90,7 +90,7 @@ function makeBack(element, random){
 
   return `<div class="back" style="background-image:url(imgs/${back})">${backTop}<h1 class="back-title">${name}</h1>
   			<div class="uni">${uni}</div>
-        <div class="deg">${deg} 2020</div>
+        <div class="deg">${deg} <span class="year">2020</span></div>
   			<div class="statement">${statement}</div>
         ${reviewStatement}
   			${externalSite}
