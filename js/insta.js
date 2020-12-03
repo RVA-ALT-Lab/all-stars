@@ -26,7 +26,7 @@ fetch(dataURL).then(function(response) {
           location.replace( url );
         }
         data.forEach(function(element, index){
-        	if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
+        	if(element.gsx$removeajerk.$t != 'yes' && element.gsx$review.$t != '#N/A' ){ //change to URL pagination game later
         		cards.push(makeCard(element));          
           		//console.log(element)
 
