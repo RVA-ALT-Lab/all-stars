@@ -41,13 +41,16 @@ function makeCard(element){
         } else {
           var star = '';
         }
+        var border = `imgs/ff_cards_front_${star}0${random}.png`;
          if (element.gsx$type.$t == 'reviewer'){
           var reviewer = 'reviewer-card';
+          border = `imgs/ff_cardsArtboardreviewer_front_default.png`;
          } else {
           var reviewer = '';
          }
+
         return `<div class="flip-container ${orientation} ${reviewer}" id="${fileName}" onclick="jQuery('#${fileName}').toggleClass('hover')"><div class="flipper">
-        <a href="#${fileName}"><div class="front" style="background-image:url(imgs/ff_cards_front_${star}0${random}.png),url(work/${fileName}.jpg)"></div></a>${makeBack(element, random)}</div></div>`
+        <a href="#${fileName}"><div class="front" style="background-image:url(${border}),url(work/${fileName}.jpg)"></div></a>${makeBack(element, random)}</div></div>`
 		//  background-image: url(img_flwr.gif), url(paper.gif);
 
         //return '<div class="flip-container"><div class="flipper"><div class="front"><img src="data:image/jpeg;base64,'+img+'"/></div>'+makeBack(element)+'</div></div>'
