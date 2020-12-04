@@ -1,5 +1,5 @@
 var spreadsheetID = "146sZdCGPEUx3mGzoO8wlLupQfK2I9_me82dsgfw7ryM"; // Make sure it is published to the web
-var dataURL = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID +"/1/public/values?alt=json";
+var dataURL = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID +"/10/public/values?alt=json";
 
 //https://spreadsheets.google.com/feeds/list/146sZdCGPEUx3mGzoO8wlLupQfK2I9_me82dsgfw7ryM/1/public/values?alt=json
 
@@ -26,16 +26,16 @@ fetch(dataURL).then(function(response) {
           location.replace( url );
         }
         data.forEach(function(element, index){
-        	if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
-        		cards.push(makeCard(element));          
-          		//console.log(element)
+          if(element.gsx$removeajerk.$t != 'yes' && index == size ){ //change to URL pagination game later
+            cards.push(makeCard(element));          
+              //console.log(element)
 
-        	}
+          }
         })
       }
       document.getElementById('card-holder').innerHTML = cards.join("");
     }).then(function(json){
-    	scrollTo()
+      scrollTo()
     });
   } 
 });
@@ -48,38 +48,43 @@ function makeCard(element){
         let orientation = element.gsx$isyourimageahorizontalorvertical.$t.toLowerCase();
         let uglyFileName = element.gsx$filename.$t;
         let fileName = cleanImageName(uglyFileName);
-        let random = Math.floor(Math.random() * 8) + 1;
-        return `<button class="save" onclick="clickerDL('${fileName}','${name}')">DOWNLOAD</button><div class="card-thing ${orientation}" id="${fileName}"><img class="work" src="work/${fileName}.jpg"><img class="frame" src="imgs/bc-0${random}.png">
-        </div>` +  makeBack(element); //<div class="flip-container col-md-7">${makeBack(element,fileName)}</div>
+        let random = Math.floor(Math.random() * 4) + 1;
+        return `<button class="save" onclick="clickerDL('${fileName}','${name}')">DOWNLOAD</button><div class="card-thing ${orientation}" id="${fileName}">
+        <img class="work" src="work/${fileName}.jpg"><img class="frame" src="imgs/ff_cards_front_allstar_0${random}.png">
+        </div>` +  makeBack(element, random); //<div class="flip-container col-md-7">${makeBack(element,fileName)}</div>
 }
 
 
-function makeBack(element){
+function makeBack(element, random){
   const name = element.gsx$yournameasyouwouldlikeittoappear.$t;
   const deg = element.gsx$mfabfabainphotography.$t;
   const uni = element.gsx$youruniversitycollegenamepleasebesuretousetheofficialname.$t;
   const statement = element.gsx$onesentence140charactersmaxaboutyourawesomeaboutyouyourimageoryourwork.$t;
+  let review = element.gsx$review.$t;
+  let reviewer = element.gsx$reviewer.$t;
+  var back = `ff_cards_back_0${random}.png`;
   if(element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t){
       var site = element["gsx$websiteurltwitterurlinstagramurl-pleaseonlyprovideone."].$t;
       var siteDiv = `<div class="site"><a target="_blank" href="${site}">More work from ${name}</a></div>`
   } else {
      var siteDiv = '';
   }
+  if (review != "#N/A"){
+    var reviewStatement = `<div class="review">"${review}"<div class="reviewer">&mdash;${reviewer}</div></div>`
+  } else {
+    var reviewStatement = '';
+  }
   const backTop = 
-  `<div class="back-top">
-  	<div class="grad">
-  		<div class="deg">${deg}</div>
-  		<div class="year">2020</div>
-  	</div>
-  	<div class="star"></div>
-  	</div>`;
+  `<div class="back-top">    
+    </div>`;
     setInstaText(name, deg, uni, statement, site);
-  return `<div class="card-thing vertical" id="the-back"><div id="back-content" class="back">${backTop}<h1 class="back-title">${name}</h1>
-  			<div class="uni">${uni}</div>
-  			<div class="statement">${statement}</div>
-  			${siteDiv}
-  			<div class="footer">© 2020 FotoFika</div>
-  			</div></div>`
+  return `<div class="card-thing vertical" id="the-back"><div id="back-content" class="back" style="background-image:url(imgs/${back})">${backTop}<h1 class="back-title">${name}</h1>
+       <div class="uni">${uni}</div>
+        <div class="deg">${deg} 2020</div>
+        <div class="statement">${statement}</div>
+        ${reviewStatement}
+        <div class="footer">©2020 FotoFika</div>
+        </div></div>`
 }
 
 function setInstaText(name, deg, uni, statement, site){
@@ -99,14 +104,14 @@ function setInstaText(name, deg, uni, statement, site){
 
 
 function cleanImageName(name){
-	let cleanerName = name.split(' -')[0];
-	let cleanName = cleanerName.toLowerCase();
-	return cleanName;
+  let cleanerName = name.split(' -')[0];
+  let cleanName = cleanerName.toLowerCase();
+  return cleanName;
 }
 
 
 function getImgId(element){
-	//"gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"
+  //"gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"
 
   var imgBase = element["gsx$uploadyourfilehere.yourfilemustbeformattedasfollows816x1110pixelsat300ppithismayrequireyoutocropyourimagetofitrgbjpegwhensavinguse12maxforimagequalitypleaseonlyusethefollowingfilenamingrequirementsmithjane.jpgtheprinterusesanautomatedprocessandimagesthatdonotadheretotheseexactspecswillbeeliminate"].$t;
   var equals = imgBase.search("=")+1;
@@ -122,11 +127,11 @@ function getImgId(element){
 //scroll to if has hash
 
 function scrollTo(){
-	if(window.location.hash) {
-		var element_to_scroll_to = document.querySelectorAll(window.location.hash)[0];
-	    element_to_scroll_to.scrollIntoView();
+  if(window.location.hash) {
+    var element_to_scroll_to = document.querySelectorAll(window.location.hash)[0];
+      element_to_scroll_to.scrollIntoView();
 
-	} 
+  } 
 
 }
 
